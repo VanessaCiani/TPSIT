@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS1</title>
+</head>
+<body>
+    <style>
+        #MioBottone {
+          display: inline-block;
+          padding: 15px 25px;
+          font-size: 24px;
+          cursor: pointer;
+          text-align: center;
+          text-decoration: none;
+          outline: none;
+          color: #fff;
+          background-color: #ffb8dc;
+          border: none;
+          border-radius: 15px;
+          box-shadow: 0 9px #f389be;
+        }
+
+        .button:hover {background-color: #ffb8dc}
+
+        .button:active {
+            background-color: #ffb8dc;
+            box-shadow: 0 5px #f389be;
+            transform: translateY(4px);
+    
+        }
+    </style>
+</head>
+
+</body>
+
+<p>JS1</p>
+<input type="" name="ciao" id="input1">
+<button id="MioBottone" onclick="aprifinestra()">Ecco il mio primo bottone</button>
+
+<div>
+    <p id="out1"> Risultato: </p>
+</div>
+
+<script>
+    function aprifinestra(){
+let i=document.getElementById("input1").value
+    alert("Daje Roma " + i);
+    document.getElementById("out1").innerHTML+=i
+    }
+</script>
+
+<style>
+    #MioBottone {
+      display: inline-block;
+      padding: 15px 25px;
+      font-size: 24px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: #ffb8dc;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #f389be;
+    }
+
+    .button:hover {background-color: #ffb8dc}
+
+    .button:active {
+        background-color: #ffb8dc;
+        box-shadow: 0 5px #f389be;
+        transform: translateY(4px);
+
+    }
+</style>
+</head>
+
+</body>
+
+<p>JS1</p>
+<input type="" name="ciao" id="input1">
+<button id="MioBottone" onclick="aprifinestra()">Ecco il mio primo bottone</button>
+
+<div>
+<p id="out1"> Risultato: </p>
+</div>
+
+<script>
+function aprifinestra(){
+let i=document.getElementById("input1").value
+alert("Daje Roma " + i);
+document.getElementById("out1").innerHTML+=i
+}
+</script>
+</body>
+</html>
