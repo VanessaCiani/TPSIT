@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aforismi degli Scienziati</title>
+    <style>
+        .aforisma {
+            display: none;
+            margin-top: 10px;
+            font-style: italic ;
+            font-size: 18px;
+           
+        }
+        button {
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ff87cb;
+            color: #49263a;
+        }
+    </style>
+</head>
+<body>
+    <h1>Aforismi degli Scienziati</h1>
+
+    <button onclick="toggleAforisma('aforisma1')">Aforisma 1</button>
+    <button onclick="toggleAforisma('aforisma2')">Aforisma 2</button>
+    <button onclick="toggleAforisma('aforisma3')">Aforisma 3</button>
+    <button onclick="toggleAforisma('aforisma4')">Aforisma 4</button>
+    <button onclick="toggleAforisma('aforisma5')">Aforisma 5</button>
+
+    <div id="aforisma1" class="aforisma">
+        “Gli scienziati sognano di fare grandi cose. Gli ingegneri le realizzano.” - James Michener
+    </div>
+    <div id="aforisma2" class="aforisma">
+        “I medici senza clienti si chiamano scienziati.” - Pitigrilli
+    </div>
+    <div id="aforisma3" class="aforisma">
+        “Chi non ammette l'insondabile mistero non può essere neanche uno scienziato.” - Albert Einstein
+    </div>
+    <div id="aforisma4" class="aforisma">
+        "Ogni cosa è fatta di atomi, quindi anche tu e io." - Richard Feynman
+    </div>
+    <div id="aforisma5" class="aforisma">
+        “Non preoccuparti delle tue difficoltà in matematica; posso assicurarti che le mie sono ancora maggiori.” - Albert Einstein
+    </div>
+
+    <script>
+        function toggleAforisma(aforismaId) {
+            var aforisma = document.getElementById(aforismaId);
+            if (aforisma.style.display === "none" || aforisma.style.display === "") {
+                aforisma.style.display = "block";
+            } else {
+                aforisma.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
