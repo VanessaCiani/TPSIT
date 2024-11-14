@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS2</title>
+    <style>
+        #MyButton1 {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #981d69;
+            background-color: #ff9fd5;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #981d69;
+        }
+    </style>
+</head>
+<body>
+<h1>JS2<h1>  
+<input type="" name="" id="MioInput1" >
+<button id=MyButton1 onclick="aprifinestra()">Cliccami</button>
+<div>
+    <p id="OUT1">Risultato: </p>
+</div>
+<script>
+    function aprifinestra(){
+ let i=document.getElementById("MioInput1").value
+    alert(" " + i);
+
+   
+    document.getElementById("OUT1").innerHTML+=i
+    }
+</script>
+</body>
+</html>

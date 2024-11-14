@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Bottoni con Funzioni Diverse</title>
+    <style>
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            background-color: #ec7fa9;
+            color: #31141f;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1> JS1 - 3 bottoni con funzioni diverse </h1>
+
+    <!-- Bottoni -->
+    <button onclick="funzione1()">Clicca per il benvenuto </button>
+    <button onclick="funzione2()">clicca per ricevere un complimento</button>
+    <button onclick="funzione3()">Clicca e cambia il colore dello sfondo in rosa</button>
+
+    <script>
+        // Funzione 1: Mostra un messaggio di benvenuto
+        function funzione1() {
+            alert("Ciao, Benvenuto nel mio sito!");
+        }
+
+        // Funzione 2: Ti dice un complimento
+        function funzione2() {
+            alert("Sei una persona stupenda!");
+
+        }
+
+        // Funzione 3: Cambia il colore di sfondo della pagina in rosa
+        function funzione3() {
+            document.body.style.backgroundColor = "lightpink";
+        
+        }
+    </script>
+
+</body>
+</html>
