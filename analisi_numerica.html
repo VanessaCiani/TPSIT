@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisi Numerica Array1</title>
+</head>
+<body>
+    <h1>Analisi Numerica</h1>
+    <p>Imparo ad usare gli Array con i numeri</p>
+    <p>Sviluppo algoritmi che inseriscono numeri particolare negli Array</p>
+    <p>Lista Numeri:</p>
+    <p id="out1"></p>
+    <script>
+        let numeri = []
+        function InserisciNumeroCasuale(i)
+        {
+            let numeroCasuale = Math.floor(Math.random()*100);
+            numeri[i] = numeroCasuale
+        }
+    InserisciNumeroCasuale(0);
+        document.getElementById("out1").innerHTML = numeri;
+        
+        function IsPRIME(n)
+            { 
+                let IsPRIME = true;
+                for(let i=2;i<(n/2);i++)
+                    {
+                        if((n%i)==0)
+                            {
+                                IsPRIME = false;
+                            }
+                    }
+                    return IsPRIME;
+            }
+console.log("50 è primo?" + IsPRIME(50));
+console.log("11 è primo?" + IsPRIMEIsPRIME(11));       
+console.log("12 è primo?" + IsPRIMEIsPRIME(12));                
+
+    </script>
+</body>
+</html>
