@@ -1,75 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analisi Numerica array1</title>
+    <title>Analisi Numerica - Array1</title>
 </head>
 <body>
- <h1>Analisi Numerica array1</h1>
- <p> Imparo ad usare gli array con i numeri</p>
- <p> Sviluppo algoritmi che inseriscono numeri particolari negli array</p>
+    <h1>Analisi Numerica - Array1</h1>
+    <p>In questo esercizio esploreremo vari concetti di programmazione usando gli array, come l'inserimento di numeri casuali e numeri primi.</p>
 
-<h3>1. Stampa 100 i numeri casuali tra 1 e 100 in un array</h3>
-<p><u><b><i>Lista Numeri: </i></b></u></p>
-<p id="out1"></p>
-<h3>2. Stampa 100 numeri consecutivi tra 1 e 1000</h3>
-<p><u><b><i>Lista Numeri: </i></b></u></p>
-<p id="out2"></p>
-<h3>3. Inserisci dentro un array 10 numeri primi casuali</h3>
-<p><u><b><i>Lista Numeri: </i></b></u></p>
-<p id="out3"></p>
-<h3>4. Inserisci in un array i numeri primi tra 1 e 100</h3>
-<p><u><b><i>Lista Numeri: </i></b></u></p>
-<p id="out4"></p>
-<h3>5. Stampa i numeri da 1 a 100 con accanto i loro fattori</h3>
-<p><u><b><i>Lista Numeri: </i></b></u></p>
-<p id="out5"></p>
+    <h3>1. Stampa 100 numeri casuali tra 1 e 100 in un array</h3>
+    <p><b>Lista numeri:</b></p>
+    <p id="out1"></p>
+
+    <h3>2. Stampa 100 numeri consecutivi tra 1 e 1000</h3>
+    <p><b>Lista numeri:</b></p>
+    <p id="out2"></p>
+
+    <h3>3. Inserisci dentro un array 10 numeri primi casuali</h3>
+    <p><b>Lista numeri:</b></p>
+    <p id="out3"></p>
+
+    <h3>4. Inserisci in un array i numeri primi tra 1 e 100</h3>
+    <p><b>Lista numeri:</b></p>
+    <p id="out4"></p>
+
+    <h3>5. Stampa i numeri da 1 a 100 con accanto i loro fattori</h3>
+    <p><b>Lista numeri e i loro fattori:</b></p>
+    <p id="out5"></p>
 
     <script>
-
-            // parte 1
-
-            let numeri1=[];
-            function InserisciNumeroCasuale(i)
-            {
-                    let numeroCasuale1=Math.floor(Math.random()*100);
-                    numeri1[i]=numeroCasuale1;
-            }
-        for(let i=0;i<100;i++)
-            {
-                InserisciNumeroCasuale(i);
-            }
-            document.getElementById("out1").innerHTML=numeri1;
-
-            // parte 2
-            
-            let numeri2=[];
-                    let numeroCasuale2=Math.floor(Math.random()*100);
-                    
-            
-        for(let i=0;i<100;i++)
-            {
-                numeri2.push(numeroCasuale2 + i)
-            }
-            document.getElementById("out2").innerHTML=numeri2;
-
-function IsPrime(n)
-        {  let isPrime=true;
-            for(let i=2;i<(n/2);i++)
-                {
-                    if((n%i)==0)
-                        {
-                            isPrime=false;
-                        }
-                }
-                return isPrime;
+        // Funzione per inserire un numero casuale tra 1 e 100
+        let numeri = [];
+        function InserisciNumeroCasuale(i) {
+            let numeroCasuale = Math.floor(Math.random() * 100) + 1;
+            numeri[i] = numeroCasuale;
         }
 
-console.log(IsPrime(50));
-console.log(IsPrime(11));
-console.log(IsPrime(12));
+        // Eseguiamo la funzione per 100 volte per ottenere 100 numeri casuali
+        for (let i = 0; i < 100; i++) {
+            InserisciNumeroCasuale(i);
+        }
+        // Stampa l'array di numeri casuali
+        document.getElementById("out1").innerHTML = numeri.join(", ");
 
+        // Creiamo un array con 100 numeri consecutivi da 1 a 100
+        let numero1 = [];
+        for (let i = 1; i <= 100; i++) {
+            numero1.push(i);
+        }
+        // Stampa l'array di numeri consecutivi
+        document.getElementById("out2").innerHTML = numero1.join(", ");
+
+        // Funzione per verificare se un numero è primo
+        function IsPrime(n) {
+            if (n <= 1) return false;  // I numeri minori di 2 non sono primi
+            for (let i = 2; i <= Math.sqrt(n); i++) {  // Controlla fino alla radice quadrata di n
+                if (n % i === 0) {
+                    return false;  // Se il numero è divisibile da qualche altro numero, non è primo
+                }
+            }
+            return true;  // Se non è divisibile, è primo
+        }
+
+        // Creiamo un array con 10 numeri primi casuali tra 1 e 100
+        let primi = [];
+        while (primi.length < 10) {
+            let num = Math.floor(Math.random() * 100) + 1;  // Genera un numero casuale
+            if (IsPrime(num) && !primi.includes(num)) {  // Aggiungi solo se il numero è primo e non già presente
+                primi.push(num);
+            }
+        }
+        // Stampa l'array di numeri primi casuali
+        document.getElementById("out3").innerHTML = primi.join(", ");
+
+        // Creiamo un array con i numeri primi tra 1 e 100
+        let numeriPrimi = [];
+        for (let i = 1; i <= 100; i++) {
+            if (IsPrime(i)) {
+                numeriPrimi.push(i);
+            }
+        }
+        // Stampa l'array di numeri primi tra 1 e 100
+        document.getElementById("out4").innerHTML = numeriPrimi.join(", ");
+
+        // Funzione per trovare i fattori di un numero
+        function getFactors(n) {
+            let factors = [];
+            for (let i = 1; i <= n; i++) {
+                if (n % i === 0) {  // Aggiungi i divisori di n
+                    factors.push(i);
+                }
+            }
+            return factors;
+        }
+
+        // Creiamo un array con i numeri da 1 a 100 e i rispettivi fattori
+        let fattori = [];
+        for (let i = 1; i <= 100; i++) {
+            let fattoriNumero = getFactors(i).join(", ");  // Converto l'array dei fattori in una stringa separata da virgole
+            fattori.push(i + ": " + fattoriNumero);  // Aggiungo il numero e i suoi fattori
+        }
+
+        // Stampa i numeri da 1 a 100 con i rispettivi fattori
+        document.getElementById("out5").innerHTML = fattori.join("<br>");
     </script>
 </body>
 </html>
