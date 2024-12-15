@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 3</title>
+</head>
+<style>
+    #red{
+        color: red;
+    }
+</style>
+<body>
+    <p id="out-1"></p>
+    <script>
+        function stampaArray(arr){
+            for(let i = 0;i<arr.length;i++){
+                if(IsPRIME(arr[i])){
+                    document.write(`<p id="red"> ${arr[i]} </p>`)
+                }else{
+                    document.write(`<p> ${arr[i]} </p>`)
+                }
+            }
+        }
+
+        function IsPRIME(n) { 
+            if (n <= 1) return false; 
+            for (let i = 2; i * i <= n; i++) { 
+                if (n % i === 0) {
+                    return false; 
+                }
+            }
+            return true; 
+        }
+
+        let numeri = []
+
+        for(let i = 0;i <1000;i++){
+            numeri[i] = i+1
+        }
+
+        stampaArray(numeri);
+    </script>
+</body>
+</html>
