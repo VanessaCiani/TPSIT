@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -7,30 +7,45 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #f9f3f3; /* Sfondo della pagina di colore chiaro */
 }
 
 .topnav {
   overflow: hidden;
-  background-color: #333;
+  background-color: #FFDAB9; /* Rosa pesca */
+  border-bottom: 2px solid #FFB6C1; /* Bordo sottile rosa chiaro */
 }
 
 .topnav a {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: #333;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  transition: all 0.3s ease; /* Animazione per transizioni fluide */
 }
 
 .topnav a:hover {
-  background-color: #ddd;
-  color: black;
+  background-color: #FF69B4; /* Rosa brillante quando si passa sopra */
+  color: white;
+  border-radius: 5px; /* Angoli arrotondati per un effetto più morbido */
 }
 
 .topnav a.active {
-  background-color: #04AA6D;
+  background-color: #FF1493; /* Rosa più scuro per il link attivo */
+  color: white;
+}
+
+.topnav a[target="_blank"] {
+  border: 2px solid #FFB6C1; /* Bordo rosa chiaro per i link esterni */
+  border-radius: 5px;
+}
+
+.topnav a[target="_blank"]:hover {
+  background-color: #FF69B4;
+  border-color: #FF1493; /* Colore del bordo cambiato durante il passaggio */
   color: white;
 }
 
@@ -59,39 +74,51 @@ body {
     text-align: left;
   }
 }
+
+h2 {
+  font-family: 'Arial', sans-serif;
+  color: #FF1493; /* Colore rosa scuro per il titolo */
+}
+
+p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+}
+
 </style>
 </head>
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a class="active">Home</a>
-  <a href="https://vanessaciani.github.io/TPSIT/News.html">News</a>
-  <a href="https://vanessaciani.github.io/TPSIT/JS1.html">JS1</a>
-  <a href="https://vanessaciani.github.io/TPSIT/JS2.html">JS2</a>
-  <a href="https://vanessaciani.github.io/TPSIT/JS3.html">JS3</a>
-  <a href="https://vanessaciani.github.io/TPSIT/JS4.html">JS4</a>
-  <a href="https://vanessaciani.github.io/TPSIT/JS5.html">JS5</a>
-  <a href="https://vanessaciani.github.io/TPSIT/JS6.html">JS6</a>
-  <a href="https://vanessaciani.github.io/TPSIT/morra_bot.html">Morra Cinese</a>
-  <a href="https://vanessaciani.github.io/TPSIT/array1.html">Array 1</a>
-  <a href="https://vanessaciani.github.io/TPSIT/array2.html">Array 2 - Matrice Responsiva</a>
-  <a href="https://vanessaciani.github.io/TPSIT/array3.html">Array 3</a>
-  <a href="https://vanessaciani.github.io/TPSIT/analisi_numerica.html">Analisi Numerica (1-1000)</a>
-  <a href="https://vanessaciani.github.io/TPSIT/flip_card.html">Flip Card</a>
-  <a href="https://vanessaciani.github.io/TPSIT/Div_CSS_Vanessa_Ciani">Div e Css</a>
-  <a href="https://vanessaciani.github.io/TPSIT/Div_e_Css.html">Aforismi</a>
-  <a href="https://vanessaciani.github.io/TPSIT/PrimaPagina.html">Prima Pagina</a>
-  <a href="https://vanessaciani.github.io/TPSIT/SchedaPersonale_VanessaCiani">Autore Vanessa Ciani</a>
+  <a class="active" href="#">Home</a>
+  <a href="https://vanessaciani.github.io/TPSIT/News.html" target="_blank">News</a>
+  <a href="https://vanessaciani.github.io/TPSIT/JS1.html" target="_blank">JS1</a>
+  <a href="https://vanessaciani.github.io/TPSIT/JS2.html" target="_blank">JS2</a>
+  <a href="https://vanessaciani.github.io/TPSIT/JS3.html" target="_blank">JS3</a>
+  <a href="https://vanessaciani.github.io/TPSIT/JS4.html" target="_blank">JS4</a>
+  <a href="https://vanessaciani.github.io/TPSIT/JS5.html" target="_blank">JS5</a>
+  <a href="https://vanessaciani.github.io/TPSIT/JS6.html" target="_blank">JS6</a>
+  <a href="https://vanessaciani.github.io/TPSIT/morra_bot.html" target="_blank">Morra Cinese</a>
+  <a href="https://vanessaciani.github.io/TPSIT/array1.html" target="_blank">Array 1</a>
+  <a href="https://vanessaciani.github.io/TPSIT/array2.html" target="_blank">Array 2 - Matrice Responsiva</a>
+  <a href="https://vanessaciani.github.io/TPSIT/array3.html" target="_blank">Array 3</a>
+  <a href="https://vanessaciani.github.io/TPSIT/analisi_numerica.html" target="_blank">Analisi Numerica (1-1000)</a>
+  <a href="https://vanessaciani.github.io/TPSIT/flip_card.html" target="_blank">Flip Card</a>
+  <a href="https://vanessaciani.github.io/TPSIT/Div_CSS_Vanessa_Ciani" target="_blank">Div e Css</a>
+  <a href="https://vanessaciani.github.io/TPSIT/Div_e_Css.html" target="_blank">Aforismi</a>
+  <a href="https://vanessaciani.github.io/TPSIT/PrimaPagina.html" target="_blank">Prima Pagina</a>
+  <a href="https://vanessaciani.github.io/TPSIT/SchedaPersonale_VanessaCiani" target="_blank">Autore Vanessa Ciani</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars"></i>
+    <i class="fa fa-bars"></i>
   </a>
 </div>
 
 <div style="padding-left:16px">
   <h2>Welcome to my site!</h2>
-  <p>Io sono Vanessa,
-    <br>E in questo sito vi mostrerò tutti gli esercizi che farò nel corso dell'anno.
-    <br>Spero vi siano di aiuto per il vostro appendimento scolastico.
+  <p>Io sono Vanessa,<br>
+    E in questo sito vi mostrerò tutti gli esercizi che farò nel corso dell'anno.<br>
+    Spero vi siano di aiuto per il vostro appendimento scolastico.
   </p>
 </div>
 
