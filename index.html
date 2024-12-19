@@ -16,6 +16,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #fef6f3; /* Rosa chiaro per il corpo */
   color: #333;
+  padding: 0;
+  margin: 0;
 }
 
 /* Barra di navigazione principale */
@@ -46,14 +48,6 @@ body {
 .topnav a.active {
   background-color: #FF1493; /* Rosa più scuro per il link attivo */
   color: white;
-}
-
-/* Aggiunta di una piccola icona per i link esterni */
-.topnav a[target="_blank"]::after {
-  content: " ↗"; /* Icona per i link esterni */
-  font-size: 14px;
-  margin-left: 8px;
-  color: #FF1493; /* Colore rosa per l'icona */
 }
 
 /* Barra di navigazione reattiva */
@@ -99,6 +93,14 @@ p {
   text-align: center;
 }
 
+/* iframe per visualizzare gli esercizi */
+iframe {
+  width: 100%;
+  height: 600px; /* Altezza fissa per l'iframe */
+  border: none;
+  margin-top: 20px;
+}
+
 /* Formattazione per link e testo */
 a {
   text-decoration: none;
@@ -116,26 +118,26 @@ a:hover {
 
 <!-- Barra di navigazione -->
 <div class="topnav" id="myTopnav">
-  <a class="active" href="#">Home</a>
-  <a href="https://vanessaciani.github.io/TPSIT/News.html" target="_blank">News</a>
-  <a href="https://vanessaciani.github.io/TPSIT/JS1.html" target="_blank">JS1</a>
-  <a href="https://vanessaciani.github.io/TPSIT/JS2.html" target="_blank">JS2</a>
-  <a href="https://vanessaciani.github.io/TPSIT/JS3.html" target="_blank">JS3</a>
-  <a href="https://vanessaciani.github.io/TPSIT/JS4.html" target="_blank">JS4</a>
-  <a href="https://vanessaciani.github.io/TPSIT/JS5.html" target="_blank">JS5</a>
-  <a href="https://vanessaciani.github.io/TPSIT/JS6.html" target="_blank">JS6</a>
-  <a href="https://vanessaciani.github.io/TPSIT/morra_bot.html" target="_blank">Morra Cinese</a>
-  <a href="https://vanessaciani.github.io/TPSIT/array1.html" target="_blank">Array 1</a>
-  <a href="https://vanessaciani.github.io/TPSIT/array2.html" target="_blank">Array 2 - Matrice Responsiva</a>
-  <a href="https://vanessaciani.github.io/TPSIT/array3.html" target="_blank">Array 3</a>
-  <a href="https://vanessaciani.github.io/TPSIT/analisi_numerica.html" target="_blank">Analisi Numerica (1-1000)</a>
-  <a href="https://vanessaciani.github.io/TPSIT/flip_card.html" target="_blank">Flip Card</a>
-  <a href="https://vanessaciani.github.io/TPSIT/Div_CSS_Vanessa_Ciani" target="_blank">Div e Css</a>
-  <a href="https://vanessaciani.github.io/TPSIT/Div_e_Css.html" target="_blank">Aforismi</a>
-  <a href="https://vanessaciani.github.io/TPSIT/PrimaPagina.html" target="_blank">Prima Pagina</a>
-  <a href="https://vanessaciani.github.io/TPSIT/SchedaPersonale_VanessaCiani" target="_blank">Autore Vanessa Ciani</a>
+  <a class="active" href="javascript:void(0);" onclick="loadPage('home')">Home</a>
+  <a href="javascript:void(0);" onclick="loadPage('News')">News</a>
+  <a href="javascript:void(0);" onclick="loadPage('JS1')">JS1</a>
+  <a href="javascript:void(0);" onclick="loadPage('JS2')">JS2</a>
+  <a href="javascript:void(0);" onclick="loadPage('JS3')">JS3</a>
+  <a href="javascript:void(0);" onclick="loadPage('JS4')">JS4</a>
+  <a href="javascript:void(0);" onclick="loadPage('JS5')">JS5</a>
+  <a href="javascript:void(0);" onclick="loadPage('JS6')">JS6</a>
+  <a href="javascript:void(0);" onclick="loadPage('morra_bot')">Morra Cinese</a>
+  <a href="javascript:void(0);" onclick="loadPage('array1')">Array 1</a>
+  <a href="javascript:void(0);" onclick="loadPage('array2')">Array 2 - Matrice Responsiva</a>
+  <a href="javascript:void(0);" onclick="loadPage('array3')">Array 3</a>
+  <a href="javascript:void(0);" onclick="loadPage('analisi_numerica')">Analisi Numerica (1-1000)</a>
+  <a href="javascript:void(0);" onclick="loadPage('flip_card')">Flip Card</a>
+  <a href="javascript:void(0);" onclick="loadPage('Div_CSS_Vanessa_Ciani')">Div e Css</a>
+  <a href="javascript:void(0);" onclick="loadPage('Aforismi')">Aforismi</a>
+  <a href="javascript:void(0);" onclick="loadPage('PrimaPagina')">Prima Pagina</a>
+  <a href="javascript:void(0);" onclick="loadPage('SchedaPersonale_VanessaCiani')">Autore Vanessa Ciani</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars"></i>
+    <i class="fa fa-bars"></i>
   </a>
 </div>
 
@@ -148,7 +150,12 @@ a:hover {
   </p>
 </div>
 
-<!-- Script per la barra di navigazione reattiva -->
+<!-- Contenitore per il contenuto dinamico -->
+<div id="content">
+  <iframe id="iframe" src="about:blank" title="Esercizio" style="display:none;"></iframe>
+</div>
+
+<!-- Script per la barra di navigazione e caricamento dinamico -->
 <script>
 function myFunction() {
   var x = document.getElementById("myTopnav");
@@ -158,6 +165,37 @@ function myFunction() {
     x.className = "topnav";
   }
 }
+
+// Funzione per caricare dinamicamente il contenuto
+function loadPage(page) {
+  var iframe = document.getElementById('iframe');
+  iframe.style.display = 'block';  // Mostra l'iframe
+  switch(page) {
+    case 'home':
+      iframe.src = 'about:blank'; // Mostra una pagina vuota
+      break;
+    case 'News':
+      iframe.src = 'https://vanessaciani.github.io/TPSIT/News.html';
+      break;
+    case 'JS1':
+      iframe.src = 'https://vanessaciani.github.io/TPSIT/JS1.html';
+      break;
+    case 'JS2':
+      iframe.src = 'https://vanessaciani.github.io/TPSIT/JS2.html';
+      break;
+    case 'JS3':
+      iframe.src = 'https://vanessaciani.github.io/TPSIT/JS3.html';
+      break;
+    case 'JS4':
+      iframe.src = 'https://vanessaciani.github.io/TPSIT/JS4.html';
+      break;
+    case 'JS5':
+      iframe.src = 'https://vanessaciani.github.io/TPSIT/JS5.html';
+      break;
+    case 'JS6':
+      iframe.src = 'https://vanessaciani.github.io/TPSIT/JS6.html';
+      break
+
 </script>
 
 </body>
