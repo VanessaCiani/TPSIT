@@ -1,42 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analisi Numerica Array1</title>
+    <title>Analisi NUmerica</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            color: #000000;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000000;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            text-align: left;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #000000;
+        }
+
+        th, td {
+            padding: 12px;
+            font-size: 14px;
+            color: #000000;
+        }
+
+        th {
+            background-color: #fd6bf3;
+            color: white;
+        }
+
+        td {
+            background-color: #ecf0f1;
+        }
+
+        .numero-primo {
+            color: red;
+            font-weight: bold;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Analisi Numerica</h1>
-    <p>Imparo ad usare gli Array con i numeri</p>
-    <p>Sviluppo algoritmi che inseriscono numeri particolare negli Array</p>
-    <p>Lista Numeri:</p>
-    <p id="out1"></p>
+
+    <h1>Analisi Numerica dei Numeri da 1 a 10000</h1>
+    
+    <table id="results">
+        <thead>
+            <tr>
+                <th>Numero</th>
+                <th>Parità</th>
+                <th>Primo</th>
+                <th>Doppio</th>
+                <th>Meta Intera</th>
+                <th>Complemento</th>
+                <th>Somma</th>
+                <th>Moltiplicazione (3.14)</th>
+                <th>Moltiplicazione (2.71)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- I risultati verranno aggiunti qui dinamicamente -->
+        </tbody>
+    </table>
+
     <script>
-        let numeri = []
-        function InserisciNumeroCasuale(i)
-        {
-            let numeroCasuale = Math.floor(Math.random()*100);
-            numeri[i] = numeroCasuale
-        }
-    InserisciNumeroCasuale(0);
-        document.getElementById("out1").innerHTML = numeri;
-        
-        function IsPRIME(n)
-            { 
-                let IsPRIME = true;
-                for(let i=2;i<(n/2);i++)
-                    {
-                        if((n%i)==0)
-                            {
-                                IsPRIME = false;
-                            }
-                    }
-                    return IsPRIME;
+        // Funzione per verificare se un numero è primo
+        function isPrime(n) {
+            if (n <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) return false;
             }
-console.log("50 è primo?" + IsPRIME(50));
-console.log("11 è primo?" + IsPRIMEIsPRIME(11));       
-console.log("12 è primo?" + IsPRIMEIsPRIME(12));                
+            return true;
+        }
+
+        // Funzione per caricare i dati dinamicamente
+        function loadData() {
+            let resultsTableBody = document.getElementById("results").getElementsByTagName('tbody')[0];
+            resultsTableBody.innerHTML = "";  // Svuota la tabella prima di aggiungere nuovi dati
+
+            for (let n = 1; n <= 10000; n++) {
+                let parita = (n % 2 === 0) ? "Pari" : "Dispari";
+                let primo = isPrime(n) ? "Primo" : "Non primo";
+                let doppio = n * 2;
+                let meta = Math.floor(n / 2);
+                let complemento = 1000 - n;
+                let somma = (n - 1) + n + (n + 1);
+                let moltiplicazione314 = (n * 3.14).toFixed(2);
+                let moltiplicazione271 = (n * 2.71).toFixed(2);
+
+                let row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${n}</td>
+                    <td>${parita}</td>
+                    <td class="${isPrime(n) ? 'numero-primo' : ''}">${primo}</td>
+                    <td>${doppio}</td>
+                    <td>${meta}</td>
+                    <td>${complemento}</td>
+                    <td>${somma}</td>
+                    <td>${moltiplicazione314}</td>
+                    <td>${moltiplicazione271}</td>
+                `;
+                resultsTableBody.appendChild(row);
+            }
+        }
+
+        // Carica i dati automaticamente quando la pagina è pronta
+        window.onload = loadData;
 
     </script>
+
 </body>
 </html>
