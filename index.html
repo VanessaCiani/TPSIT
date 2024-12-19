@@ -4,16 +4,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-body {
+/* Reset base */
+* {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f9f3f3; /* Sfondo della pagina di colore chiaro */
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Impostazioni base per il corpo della pagina */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fef6f3; /* Rosa chiaro per il corpo */
+  color: #333;
+}
+
+/* Barra di navigazione principale */
 .topnav {
   overflow: hidden;
   background-color: #FFDAB9; /* Rosa pesca */
-  border-bottom: 2px solid #FFB6C1; /* Bordo sottile rosa chiaro */
+  border-bottom: 3px solid #FFB6C1; /* Bordo sottile per separazione */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombra leggera */
 }
 
 .topnav a {
@@ -21,16 +31,16 @@ body {
   display: block;
   color: #333;
   text-align: center;
-  padding: 14px 16px;
+  padding: 16px 20px;
   text-decoration: none;
-  font-size: 17px;
-  transition: all 0.3s ease; /* Animazione per transizioni fluide */
+  font-size: 18px;
+  transition: all 0.3s ease; /* Animazione transizione */
 }
 
 .topnav a:hover {
   background-color: #FF69B4; /* Rosa brillante quando si passa sopra */
   color: white;
-  border-radius: 5px; /* Angoli arrotondati per un effetto più morbido */
+  border-radius: 5px;
 }
 
 .topnav a.active {
@@ -38,17 +48,15 @@ body {
   color: white;
 }
 
-.topnav a[target="_blank"] {
-  border: 2px solid #FFB6C1; /* Bordo rosa chiaro per i link esterni */
-  border-radius: 5px;
+/* Aggiunta di una piccola icona per i link esterni */
+.topnav a[target="_blank"]::after {
+  content: " ↗"; /* Icona per i link esterni */
+  font-size: 14px;
+  margin-left: 8px;
+  color: #FF1493; /* Colore rosa per l'icona */
 }
 
-.topnav a[target="_blank"]:hover {
-  background-color: #FF69B4;
-  border-color: #FF1493; /* Colore del bordo cambiato durante il passaggio */
-  color: white;
-}
-
+/* Barra di navigazione reattiva */
 .topnav .icon {
   display: none;
 }
@@ -75,21 +83,38 @@ body {
   }
 }
 
+/* Stili per il contenuto principale */
 h2 {
   font-family: 'Arial', sans-serif;
-  color: #FF1493; /* Colore rosa scuro per il titolo */
+  color: #FF1493; /* Rosa scuro per il titolo */
+  margin-bottom: 20px;
+  font-size: 30px;
+  text-align: center;
 }
 
 p {
   font-size: 18px;
+  line-height: 1.8;
   color: #555;
-  line-height: 1.6;
+  text-align: center;
+}
+
+/* Formattazione per link e testo */
+a {
+  text-decoration: none;
+  color: #FF1493; /* Colore per i link */
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #FF69B4;
 }
 
 </style>
 </head>
 <body>
 
+<!-- Barra di navigazione -->
 <div class="topnav" id="myTopnav">
   <a class="active" href="#">Home</a>
   <a href="https://vanessaciani.github.io/TPSIT/News.html" target="_blank">News</a>
@@ -114,7 +139,8 @@ p {
   </a>
 </div>
 
-<div style="padding-left:16px">
+<!-- Contenuto principale -->
+<div style="padding-left:16px; padding-top:20px;">
   <h2>Welcome to my site!</h2>
   <p>Io sono Vanessa,<br>
     E in questo sito vi mostrerò tutti gli esercizi che farò nel corso dell'anno.<br>
@@ -122,6 +148,7 @@ p {
   </p>
 </div>
 
+<!-- Script per la barra di navigazione reattiva -->
 <script>
 function myFunction() {
   var x = document.getElementById("myTopnav");
