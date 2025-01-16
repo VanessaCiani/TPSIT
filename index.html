@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CodeMania</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+
+      .card {
+        width: 18rem;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        transition: transform 0.3s ease-in-out;
+      }
+      .card-img-top {
+        width: 100%;
+        height: 200px; 
+        object-fit: cover; 
+        border-radius: 10px 10px 0 0; 
+      }
+
+      .card-body {
+        border-radius: 0 0 10px 10px;
+        padding: 20px;
+      }
+
+      .card.html-css {
+        background-color: #007bff; 
+        color: white;
+      }
+      .card.javascript {
+        background-color: #f0ad4e; 
+        color: white;
+      }
+      .card.bootstrap {
+        background-color: #7609eb; 
+        color: white;
+      }
+
+      
+      .card:hover {
+        transform: translateY(-10px);
+      }
+
+      .card-body h5, .card-body p {
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); 
+      }
+
+      .container {
+        max-width: 100%;
+        padding-left: 10%;  
+        padding-right: 10%; 
+      }
+
+      .row {
+        justify-content: space-between;
+      }
+
+      .col-sm {
+        margin-bottom: 20px;
+      }
+
+      nav.navbar {
+        margin-bottom: 40px;
+      }
+
+      .display-4 {
+        color: #333;
+      }
+
+      .lead {
+        color: #666;
+      }
+
+      .btn-light {
+        color: #333;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+      }
+      .btn-light:hover {
+        background-color: #f1f1f1;
+      }
+
+    </style>
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="mania.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+            CodeMania
+          </a>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h1 class="display-4 mb-4">Impara a progammare con CodeMania</h1>
+          <p class="lead mb-5">Ambiente per aiutare i programmatori a creare i loro lavori!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+          <div class="col-sm">
+              <div class="card html-css">
+                  <img src="html&css.png" class="card-img-top" alt="HTML & CSS">
+                  <div class="card-body">
+                    <h5 class="card-title">HTML & CSS</h5>
+                    <p class="card-text">HTML è un linguaggio che permette di strutturare i contenuti di una pagina web, come testi, immagini e link. CSS è utilizzato per definire lo stile e l'aspetto visivo della pagina, controllando colori, font e layout. Insieme, HTML e CSS sono fondamentali per creare e personalizzare l'aspetto delle pagine web.</p>
+                    <a href="https://fabiomonaco2007.github.io/TPSIT/esercizi_html&css.html" class="btn btn-light">Vai agli Esercizi</a>
+                  </div>
+                </div>
+          </div>
+
+          <div class="col-sm">
+              <div class="card javascript">
+                  <img src="java_script.png" class="card-img-top" alt="JavaScript">
+                  <div class="card-body">
+                    <h5 class="card-title">JavaScript</h5>
+                    <p class="card-text">JavaScript è un linguaggio di programmazione che rende interattive le pagine web. Permette di aggiungere dinamismo, effetti speciali e interazioni in tempo reale senza ricaricare la pagina. È essenziale per creare applicazioni web più moderne e coinvolgenti, interagendo con l'utente e i dati in modo fluido e rapido.</p>
+                    <a href="https://fabiomonaco2007.github.io/TPSIT/esercizi_javascript.html" class="btn btn-light">Vai agli Esercizi</a>
+                  </div>
+                </div>
+          </div>
+
+          <div class="col-sm">
+              <div class="card bootstrap">
+                  <img src="bootstrap.png" class="card-img-top" alt="Bootstrap">
+                  <div class="card-body">
+                    <h5 class="card-title">Bootstrap</h5>
+                    <p class="card-text">
+                      Bootstrap è un framework open source che facilita lo sviluppo di siti web moderni e responsive. Fornisce strumenti predefiniti, come layout, componenti e stili CSS, per creare pagine web ottimizzate per diversi dispositivi. Con Bootstrap, è possibile realizzare design coerenti e professionali.</p>
+                    <a href="https://fabiomonaco2007.github.io/TPSIT/esercizi_bootstrap.html" class="btn btn-light">Vai agli Esercizi</a>
+                  </div>
+                </div>
+          </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybP6T3U7b9c6D2bpz52mmuJrF6bER44jBlF4QTrgfA9WbY3ypV" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqLa9zOjmYfF4SA8xWrKDzy73lzZ+J6MlmZX2fXoKe9P9" crossorigin="anonymous"></script>
+  </body>
+</html>
