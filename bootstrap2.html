@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Evoluzione Di Internet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+        .navbar-brand, .nav-link {
+            color: rgb(204, 233, 240) !important;
+        }
+
+        .card {
+            margin-top: 20px;
+        }
+        .carousel-item img {
+            height: 400px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg " style="background-color:rgb(35, 55, 143)">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" style="color: white">INTERNET EVOLUTION</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Servizi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Informazioni</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contatti</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--CAROSELLO-->
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="carrosello1.png" class="d-block w-100" alt="Cyber Security 1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>L'Ecoluzione di Internet</h5>
+          <p>Internet è evoluto da rete accademica e militare negli anni '60 a piattaforma globale e interattiva dal 2000 in poi.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="carrosello2.png" class="d-block w-100" alt="Cyber Security 2">
+        <div class="carousel-caption d-none d-md-block">
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="carrosello3.png" class="d-block w-100" alt="Cyber Security 3">
+        <div class="carousel-caption d-none d-md-block">
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Precedente</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Successivo</span>
+    </button>
+  </div>  
+
+<!--CARD-->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="internet60.png" class="card-img-top" alt="Card 1">
+                <div class="card-body">
+                    <h5 class="card-title">Primi Anni (1960-1990)</h5>
+                    <p class="card-text">Internet nasce come ARPANET negli anni '60,ed è un progetto per la condivisione di informazioni tra università e militari negli Stati Uniti. Iniziò a svilupparsi gradualmente come una rete di comunicazione tra computer, ponendo le basi per l'Internet moderno.</p>
+                    <a href="#" class="btn btn-primary">Clicca per continuare a leggere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="internet90.png" class="card-img-top" alt="Card 2">
+                <div class="card-body">
+                    <h5 class="card-title">Diffusione globale (1990-2000)</h5>
+                    <p class="card-text"> Con la creazione del World Wide Web da parte di Tim Berners-Lee e la nascita dei browser come Netscape, Internet diventa accessibile al pubblico e cresce rapidamente, portando alla nascita dei primi motori di ricerca, siti di e-commerce e social network.</p>
+                    <a href="#" class="btn btn-primary">Clicca per continuare a leggere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="internet_oggi.png" class="card-img-top" alt="Card 3">
+                <div class="card-body">
+                    <h5 class="card-title">Internet mobile e Web 2.0 (2000-oggi)</h5>
+                    <p class="card-text">L'avvento degli smartphone e l'evoluzione dei social media e delle piattaforme di streaming cambiano radicalmente l'uso di Internet, favorendo la connessione in mobilità e l'interazione tra utenti in tempo reale.</p>
+                    <a href="#" class="btn btn-primary">Clicca per continuare a leggere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
