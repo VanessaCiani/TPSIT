@@ -6,17 +6,22 @@
     <title>L'Evoluzione Di Internet</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-
         .navbar-brand, .nav-link {
             color: rgb(204, 233, 240) !important;
         }
 
         .card {
             margin-top: 20px;
+            height: 100%; /* Assicurati che la card prenda tutta l'altezza disponibile */
         }
-        .carousel-item img {
-            height: 400px;
+        .card-img-top {
+            height: 250px; /* Imposta un'altezza fissa per le immagini */
             object-fit: cover;
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
     </style>
 </head>
@@ -81,7 +86,7 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Successivo</span>
     </button>
-  </div>  
+</div>  
 
 <!--CARD-->
 <div class="container mt-5">
@@ -118,6 +123,8 @@
         </div>
     </div>
 </div>
+<br>
+<br>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
