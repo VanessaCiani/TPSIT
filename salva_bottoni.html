@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bottoni a Tempo</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #5a0202; 
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #ECF0F1;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #ECF0F1;
+            text-align: center;
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        button {
+            background-color: #b51616;
+            color: white;
+            padding: 12px 25px;
+            margin: 10px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #d62121;
+            transform: scale(1.1);
+        }
+
+        button:active {
+            transform: scale(1.05);
+        }
+
+        #output {
+            margin-top: 20px;
+            background-color: #c61212;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        #time, #timeDifferences {
+            font-size: 1.2em;
+            color: #ECF0F1;
+            margin: 10px 0;
+        }
+
+        .time-output {
+            font-size: 1.1em;
+            color: #ECF0F1;
+            margin: 5px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            button {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+
+            #output {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Bottoni e Tempo</h1>
+    <p>Cliccando il primo bottone "Data e Ora" potrai visualizzare la data e l'orario corrente.<br>Cliccando gli altri tre bottoni potrai scoprire quanto tempo è passato da quando hai cliccato l'ultima volta il primo bottone.</p>
+    
+    <div>
+        <button id="button1">Data e Ora</button>
+        <button id="button2">Tempo in Secondi</button>
+        <button id="button3">Tempo in Decimi</button>
+        <button id="button4">Tempo in Millesimi</button>
+    </div>
+
+    <div id="output">
+        <p id="time"></p>
+        <div id="timeDifferences">
+            <p class="time-output" id="secondsOutput"></p>
+            <p class="time-output" id="decimalsOutput"></p>
+            <p class="time-output" id="millisecondsOutput"></p>
+        </div>
+    </div>
+
+    <script>
+        // Array per memorizzare i tempi tra i click
+        let times = [];
+        let firstClickTime = null;
+
+        // Funzione per stampare la data e ora corrente
+        function printTime() {
+            const now = new Date();
+            document.getElementById('time').textContent = "Data e ora corrente: " + now.toLocaleString();
+        }
+
+        // Funzione per memorizzare i tempi tra i click
+        function trackTime() {
+            const currentTime = Date.now();
+
+            if (firstClickTime === null) {
+                // Primo click
+                firstClickTime = currentTime;
+                times.push(0); 
+            } else {
+                // Calcolare la differenza in millisecondi
+                let timeDifference = currentTime - firstClickTime;
+                let seconds = (timeDifference / 1000).toFixed(3); 
+                let decimi = (timeDifference / 100).toFixed(1); 
+                let milliseconds = (timeDifference).toFixed(0); 
+
+                times.push(seconds);
+
+                // Aggiornare l'output con i tempi
+                document.getElementById('secondsOutput').textContent = "Tempo in Secondi: " + seconds;
+                document.getElementById('decimalsOutput').textContent = "Tempo in Decimi: " + decimi;
+                document.getElementById('millisecondsOutput').textContent = "Tempo in Millesimi: " + milliseconds;
+            }
+        }
+
+        // Eventi per i bottoni
+        document.getElementById('button1').addEventListener('click', function() {
+            printTime();
+            trackTime();
+        });
+
+        document.getElementById('button2').addEventListener('click', function() {
+            printTime();
+            trackTime();
+        });
+
+        document.getElementById('button3').addEventListener('click', function() {
+            printTime();
+            trackTime();
+        });
+
+        document.getElementById('button4').addEventListener('click', function() {
+            printTime();
+            trackTime();
+        });
+    </script>
+</body>
+</html>
