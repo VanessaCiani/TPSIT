@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Griglie Colorate</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: white;
+      flex-direction: column;
+    }
+    .griglia {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 50px; 
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      background-color: black;
+    }
+    .griglia-2x2 {
+      grid-template-columns: repeat(2, 100px);
+      grid-template-rows: repeat(2, 100px);
+    }
+    .griglia-3x3 {
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+    }
+    .quadrato {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .quadrato:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+    .colore1 { background-color: red; }
+    .colore2 { background-color: yellow; }
+    .colore3 { background-color: green; }
+    .colore4 { background-color: #1E90FF; }
+    .colore5 { background-color: purple; }
+    .colore6 { background-color: pink; }
+    .colore7 { background-color: blue; }
+    .colore8 { background-color: orange; }
+    .colore9 { background-color: lightblue; }
+  </style>
+</head>
+<body>
+
+  <!-- Griglia 2x2 -->
+  <div class="griglia griglia-2x2">
+    <div class="quadrato colore1"></div>
+    <div class="quadrato colore2"></div>
+    <div class="quadrato colore3"></div>
+    <div class="quadrato colore4"></div>
+  </div>
+
+  <!-- Griglia 3x3 -->
+  <div class="griglia griglia-3x3">
+    <div class="quadrato colore1"></div>
+    <div class="quadrato colore2"></div>
+    <div class="quadrato colore3"></div>
+    <div class="quadrato colore4"></div>
+    <div class="quadrato colore5"></div>
+    <div class="quadrato colore6"></div>
+    <div class="quadrato colore7"></div>
+    <div class="quadrato colore8"></div>
+    <div class="quadrato colore9"></div>
+  </div>
+
+</body>
+</html>
