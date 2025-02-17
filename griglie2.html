@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Griglie Colorate</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: white;
+      flex-direction: column;
+    }
+    .griglia {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 50px; 
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      background-color: black;
+    }
+    .griglia-2x2 {
+      grid-template-columns: repeat(2, 100px);
+      grid-template-rows: repeat(2, 100px);
+    }
+    
+    .quadrato {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .quadrato:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+    .colore1 { background-color: red; }
+    .colore2 { background-color: yellow; }
+    .colore3 { background-color: green; }
+    .colore4 { background-color: dodgerblue; }
+    
+    #frase {
+      margin-top: 20px;
+      font-size: 20px;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Griglia 2x2 -->
+  <div class="griglia griglia-2x2">
+    <div class="quadrato colore1" onclick="mostraFrase('Hai cliccato il quadrato rosso!')"></div>
+    <div class="quadrato colore2" onclick="mostraFrase('Hai cliccato il quadrato giallo!')"></div>
+    <div class="quadrato colore3" onclick="mostraFrase('Hai cliccato il quadrato verde!')"></div>
+    <div class="quadrato colore4" onclick="mostraFrase('Hai cliccato il quadrato blu!')"></div>
+  </div>
+
+  <div id="frase"></div>
+
+  <script>
+    
+    function mostraFrase(frase) {
+      document.getElementById('frase').innerText = frase;
+    }
+  </script>
+
+</body>
+</html>
