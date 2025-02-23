@@ -1,83 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory Game</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Game Memory</title>
+    <!-- Importazione di Bootstrap 5 per la struttura e lo stile -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Stili per la griglia di pulsanti */
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 100px); /* 3 colonne di 100px */
+            grid-gap: 10px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .btn-memory {
+            width: 100px;
+            height: 100px;
+            font-size: 30px;
+            border-radius: 15px;
+            transition: background-color 0.3s; /* Effetto transizione per il colore */
+            
+        }
+
+        /* Colori differenti per ciascun pulsante della griglia */
+        .btn-memory[data-index="0"] { background-color: #ca1400; } 
+        .btn-memory[data-index="1"] { background-color: #e88504; } 
+        .btn-memory[data-index="2"] { background-color: #ffde21; } 
+        .btn-memory[data-index="3"] { background-color: #1abc50; } 
+        .btn-memory[data-index="4"] { background-color: #007d6c; } 
+        .btn-memory[data-index="5"] { background-color: #005c6f; } 
+        .btn-memory[data-index="6"] { background-color: #0b5495; } 
+        .btn-memory[data-index="7"] { background-color: #481372; }
+        .btn-memory[data-index="8"] { background-color: #820282; } 
+
+        /* Colore di evidenza quando il pulsante è attivo nella sequenza */
+        .highlighted {
+            opacity: 0.7; /* Rendiamo il pulsante più trasparente quando si illumina */
+            transform: scale(1.1); /* Ingigantiamo il pulsante durante l'illuminazione */
+        }
+
+        /* Disabilita i pulsanti durante la visualizzazione della sequenza */
+        .disabled {
+            pointer-events: none;
+        }
+    </style>
 </head>
-<style>
-    .btn{
-        width: 100px;
-        height: 100px;
-        margin-bottom: 5px;
-        margin-left: 5px;
-        margin-right: 5px;
-        margin-top: 5px;
-        background-color: red;
-        border-color: red;
-        cursor: pointer;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    }
+<body class="bg-light">
+    <div class="container text-center">
+        <h1 class="mt-5">Gioco Memory</h1>
+        <!-- Pulsante Start per iniziare il gioco -->
+        <button id="startBtn" class="btn btn-primary mt-4">Inizia</button>
+        
+        <!-- Area per mostrare lo stato del gioco (es. "Corretto!" o "Hai perso!") -->
+        <div id="gameStatus" class="mt-3"></div>
+        
+        <!-- Area per mostrare il punteggio -->
+        <div id="score" class="mt-2"></div>
 
-    .btn:hover {
-        background-color: #ffffff; /* Colore di sfondo quando hover */
-        border-color: #ffffff; /* Colore del bordo quando hover */
-        color: white; /* Colore del testo */
-    }
-
-    .active-shadow {
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
-    }
-
-    .row{
-        margin: 0 auto;
-        max-width: 330px;
-    }
-
-    .col {
-        margin: 0px;
-        padding: 0px;
-    }
-    
-    .container{
-        height: 100vh;
-        align-items: center;
-    }
-</style>
-<body>
-    
-    <div class="container text-center"Style ="" width=" 100px" height="100px">
-        <div class="row row-cols-3">
-            <div class="col">
-                <button class="btn btn-primary" ></button>
-            </div>
-            <div class="col">
-                <button class="btn btn-primary"></button>
-            </div>
-            <div class="col">
-                <button class="btn btn-primary"></button>
-            </div>
-            <div class="col">
-                <button class="btn btn-primary"></button>
-            </div>
-            <div class="col">
-                <button class="btn btn-primary"></button>
-            </div>
-            <div class="col">
-                <button class="btn btn-primary"></button>
-            </div>
-            <div class="col">
-                <button class="btn btn-primary"></button>
-            </div>
-            <div class="col">
-                <button class="btn btn-primary"></button>
-            </div>
-            <div class="col">
-                <button class="btn btn-primary"></button>
-            </div>
+        <!-- Griglia di pulsanti (sempre visibile) -->
+        <div id="buttonGrid" class="button-grid mt-5">
+            <button class="btn btn-memory" data-index="0"></button>
+            <button class="btn btn-memory" data-index="1"></button>
+            <button class="btn btn-memory" data-index="2"></button>
+            <button class="btn btn-memory" data-index="3"></button>
+            <button class="btn btn-memory" data-index="4"></button>
+            <button class="btn btn-memory" data-index="5"></button>
+            <button class="btn btn-memory" data-index="6"></button>
+            <button class="btn btn-memory" data-index="7"></button>
+            <button class="btn btn-memory" data-index="8"></button>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Aspetta che la pagina sia completamente caricata
+        document.addEventListener('DOMContentLoaded', function() {
+            // Riferimenti agli elementi della pagina
+            const startBtn = document.getElementById('startBtn');
+            const gameStatus = document.getElementById('gameStatus');
+            const scoreBoard = document.getElementById('score');
+            const buttonGrid = document.getElementById('buttonGrid');
+
+            let sequence = [];         // La sequenza che il gioco genera
+            let userSequence = [];     // La sequenza che l'utente inserisce
+            let score = 0;             // Il punteggio dell'utente
+            let gameActive = false;    // Stato del gioco (attivo o finito)
+
+            // Funzione per avviare il gioco
+            const startGame = () => {
+                score = 0; // Reset del punteggio
+                userSequence = []; // Reset della sequenza dell'utente
+                sequence = []; // Reset della sequenza del gioco
+                gameStatus.textContent = ''; // Cancella il messaggio di stato
+                scoreBoard.textContent = `Il tuo punteggio: ${score}`; // Mostra il punteggio
+                gameActive = true; // Il gioco è attivo
+                startBtn.classList.add('disabled'); // Disabilita il pulsante "Start"
+                addNewStepToSequence(); // Aggiungi il primo passo alla sequenza
+            };
+
+            // Funzione per aggiungere un nuovo passo (pulsante) alla sequenza
+            const addNewStepToSequence = () => {
+                const newStep = Math.floor(Math.random() * 9); // Genera un numero casuale tra 0 e 8
+                sequence.push(newStep); // Aggiunge il nuovo passo alla sequenza
+                playSequence(); // Riproduce la sequenza al giocatore
+            };
+
+            // Funzione per riprodurre la sequenza
+            const playSequence = () => {
+                let index = 0;
+                const interval = setInterval(() => {
+                    highlightButton(sequence[index]); // Evidenzia il pulsante
+                    index++;
+                    if (index >= sequence.length) {
+                        clearInterval(interval); // Ferma l'animazione quando la sequenza è finita
+                        enableButtons(); // Abilita i pulsanti per la risposta dell'utente
+                        gameStatus.textContent = 'Tocca a te!'; // Messaggio per l'utente
+                    }
+                }, 1000); // Ogni pulsante rimane evidenziato per 1 secondo
+            };
+
+            // Funzione per evidenziare un pulsante
+            const highlightButton = (index) => {
+                const btn = buttonGrid.querySelector(`[data-index='${index}']`);
+                btn.classList.add('highlighted'); // Aggiungi la classe "highlighted" per evidenziarlo
+                setTimeout(() => {
+                    btn.classList.remove('highlighted'); // Rimuovi l'evidenza dopo 500ms
+                }, 500);
+            };
+
+            // Funzione per gestire il clic dell'utente
+            const handleUserClick = (e) => {
+                if (!gameActive) return; // Se il gioco non è attivo, non fare nulla
+                const clickedIndex = e.target.dataset.index; // Ottieni l'indice del pulsante cliccato
+                userSequence.push(Number(clickedIndex)); // Aggiungi il pulsante cliccato alla sequenza dell'utente
+
+                // Controlla se l'utente ha cliccato correttamente
+                if (userSequence[userSequence.length - 1] !== sequence[userSequence.length - 1]) {
+                    endGame(); // Se ha sbagliato, termina il gioco
+                } else if (userSequence.length === sequence.length) {
+                    // Se ha riprodotto tutta la sequenza correttamente
+                    score++; // Aumenta il punteggio
+                    scoreBoard.textContent = `Il tuo punteggio: ${score}`; // Mostra il nuovo punteggio
+                    userSequence = []; // Reset della sequenza dell'utente
+                    gameStatus.textContent = 'Corretto! Prossima sequenza in arrivo...'; // Messaggio di successo
+                    disableButtons(); // Disabilita i pulsanti per un breve momento
+                    setTimeout(addNewStepToSequence, 1000); // Aggiungi un nuovo passo alla sequenza
+                }
+            };
+
+            // Funzione per disabilitare i pulsanti
+            const disableButtons = () => {
+                const buttons = buttonGrid.querySelectorAll('.btn-memory');
+                buttons.forEach(btn => btn.classList.add('disabled')); // Disabilita tutti i pulsanti
+            };
+
+            // Funzione per abilitare i pulsanti
+            const enableButtons = () => {
+                const buttons = buttonGrid.querySelectorAll('.btn-memory');
+                buttons.forEach(btn => btn.classList.remove('disabled')); // Riabilita tutti i pulsanti
+            };
+
+            // Funzione per terminare il gioco
+            const endGame = () => {
+                gameActive = false; // Il gioco è finito
+                gameStatus.textContent = `Hai perso! Il tuo punteggio finale è: ${score}`; // Mostra il punteggio finale
+                startBtn.classList.remove('disabled'); // Rende di nuovo disponibile il pulsante "Start"
+            };
+
+            // Funzione che serve a far cliccare tutti i pulsanti
+            buttonGrid.querySelectorAll('.btn-memory').forEach(btn => {
+                btn.addEventListener('click', handleUserClick);
+            });
+
+            // Funzione che serve a far cliccare il pulsante d'Inizio
+            startBtn.addEventListener('click', startGame);
+        });
+    </script>
 </body>
 </html>
