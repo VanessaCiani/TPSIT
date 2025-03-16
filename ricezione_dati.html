@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulo di Ricezione Dati</title>
+    <script>
+        // Funzione per ottenere i parametri dalla query string dell'URL
+        function getQueryParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const inputA = urlParams.get('inputA');
+            const inputB = urlParams.get('inputB');
+            return { inputA, inputB };
+        }
+
+        // Funzione che calcola la lunghezza della stringa
+        function calcolaLunghezza(inputA, inputB) {
+            document.getElementById("lunghezzaA").textContent = "Lunghezza Stringa A: " + inputA.length;
+            document.getElementById("lunghezzaB").textContent = "Lunghezza Stringa B: " + inputB.length;
+        }
+
+        // Funzione che restituisce la stringa al contrario
+        function stringaContraria(inputA, inputB) {
+            document.getElementById("contrarioA").textContent = "Stringa A al contrario: " + inputA.split('').reverse().join('');
+            document.getElementById("contrarioB").textContent = "Stringa B al contrario: " + inputB.split('').reverse().join('');
+        }
+
+        // Funzione che unisce le due stringhe
+        function unisciStringhe(inputA, inputB) {
+            document.getElementById("unione").textContent = "Stringhe unite: " + inputA + " " + inputB;
+        }
+
+        // Funzione che calcola la somma delle lunghezze e controlla se la stringa B è troppo lunga
+        function sommaLunghezze(inputA, inputB) {
+            const lunghezzaA = inputA.length;
+            const lunghezzaB = inputB.length;
+
+            const somma = lunghezzaA + lunghezzaB;
+            document.getElementById("somma").textContent = "Somma delle lunghezze: " + somma;
+
+            if (lunghezzaB > 20) {
+                document.getElementById("errore").textContent = "B troppo lunga!";
+            } else {
+                document.getElementById("errore").textContent = "";
+            }
+        }
+
+        // Quando la pagina è caricata, esegui le operazioni
+        window.onload = function() {
+            const { inputA, inputB } = getQueryParams(); // Estrai i dati dalla query string
+
+            if (inputA && inputB) {
+                // Esegui le operazioni
+                calcolaLunghezza(inputA, inputB);
+                stringaContraria(inputA, inputB);
+                unisciStringhe(inputA, inputB);
+                sommaLunghezze(inputA, inputB);
+            } else {
+                alert("I parametri inputA o inputB non sono stati trovati!");
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Modulo di Ricezioni Dati</h1>
+    <h3>Risultati delle due stringhe (A e B):</h3>
+    <p id="lunghezzaA"></p>
+    <p id="lunghezzaB"></p>
+    <p id="contrarioA"></p>
+    <p id="contrarioB"></p>
+    <p id="unione"></p>
+    <p id="somma"></p>
+    <p id="errore" style="color: red;"></p>
+</body>
+</html>
