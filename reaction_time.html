@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Gioco dei Numeri</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+
+    #gameArea {
+      position: relative;
+      width: 600px;
+      height: 600px;
+      margin: 20px auto;
+      border: 1px solid #c3d2df;
+      background-color: #fff;
+      overflow: hidden;
+    }
+
+    .number, #startBtn {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background-color: #4c7faf;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      user-select: none;
+      font-weight: bold;
+      font-size: 1.2em;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+      border: none;
+    }
+
+    #startBtn {
+      position: static;
+      margin: 10px auto;
+    }
+
+    #timer {
+      font-size: 1.5em;
+      margin-top: 10px;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gioco dei Numeri</h1>
+  <button id="startBtn">Start</button>
+  <div id="timer">Tempo: 0.00s</div>
+  <div id="gameArea"></div>
+
+  <script>
+    const startBtn = document.getElementById('startBtn'); // Bottone per iniziare
+    const gameArea = document.getElementById('gameArea'); // Area di gioco
+    const timerDisplay = document.getElementById('timer'); // Visualizza il tempo
+
+    let nextNumber = 1; // Prossimo numero da cliccare
+    let startTime, timerInterval; // Variabili per il timer
+
+    startBtn.addEventListener('click', startGame); // Avvia il gioco al click
+
+    function startGame() {
+      gameArea.innerHTML = ''; // Svuota l’area di gioco
+      nextNumber = 1; // Riparte dal numero 1
+      startBtn.disabled = true; // Disabilita il bottone Start
+
+      const positions = generateGridPositions(5, 4, 600, 600, 60); // Genera posizioni per 20 numeri
+      const numbers = shuffle([...Array(20).keys()].map(n => n + 1)); // Array di numeri da 1 a 20, mescolati
+
+      numbers.forEach((num, index) => {
+        const { x, y } = positions[index]; // Prende posizione casuale
+        createNumberElement(num, x, y); // Crea il numero nella posizione
+      });
+
+      startTime = Date.now(); // Salva il tempo di inizio
+      timerInterval = setInterval(updateTimer, 50); // Aggiorna il timer ogni 50ms
+    }
+
+    function createNumberElement(num, x, y) {
+      const el = document.createElement('div'); // Crea un nuovo div
+      el.classList.add('number'); // Aggiunge la classe per lo stile
+      el.textContent = num; // Mostra il numero
+      el.style.left = `${x}px`; // Posizione orizzontale
+      el.style.top = `${y}px`; // Posizione verticale
+
+      el.addEventListener('click', () => { // Quando clicco sul numero
+        if (parseInt(el.textContent) === nextNumber) { // Se è il numero giusto
+          el.remove(); // Rimuove il numero
+          nextNumber++; // Passa al prossimo
+          if (nextNumber > 20) { // Se ho finito tutti i numeri
+            clearInterval(timerInterval); // Ferma il timer
+            const elapsed = ((Date.now() - startTime) / 1000).toFixed(2); // Calcola il tempo
+            alert(`Complimenti! Tempo impiegato: ${elapsed}s`); // Mostra il tempo
+            startBtn.disabled = false; // Riabilita il bottone Start
+          }
+        }
+      });
+
+      gameArea.appendChild(el); // Aggiunge il numero all’area di gioco
+    }
+
+    function generateGridPositions(rows, cols, width, height, size) {
+      const cellWidth = width / cols; // Larghezza di ogni cella
+      const cellHeight = height / rows; // Altezza di ogni cella
+      const positions = []; // Array delle posizioni
+
+      for (let r = 0; r < rows; r++) { // Ciclo sulle righe
+        for (let c = 0; c < cols; c++) { // Ciclo sulle colonne
+          const offsetX = (cellWidth - size) / 2; // Centra il numero nella cella
+          const offsetY = (cellHeight - size) / 2;
+          positions.push({
+            x: c * cellWidth + offsetX, // Calcola la posizione x
+            y: r * cellHeight + offsetY // Calcola la posizione y
+          });
+        }
+      }
+
+      return shuffle(positions); // Mescola le posizioni
+    }
+
+    function shuffle(array) { // Algoritmo di Fisher-Yates per mescolare
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function updateTimer() {
+      const elapsed = (Date.now() - startTime) / 1000; // Calcola il tempo trascorso
+      timerDisplay.textContent = `Tempo: ${elapsed.toFixed(2)}s`; // Aggiorna il testo
+    }
+  </script>
+</body>
+</html>
